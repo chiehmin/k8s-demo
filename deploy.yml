@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http
+spec:
+  selector:
+    matchLabels:
+      app: http
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: http
+    spec:
+      containers:
+        - name: http
+          image: python:3
+          command: ["python"]
+          args: ["/code/http_server.py"]
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /code
+              name: code
+      volumes:
+        - name: code
+          configMap:
+            name: code

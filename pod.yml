@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: http
+  labels:
+    app: http
+spec:
+  containers:
+    - name: http
+      image: python:3
+      command: ["python"]
+      args: ["-m", "http.server", "80"]
+      ports:
+        - containerPort: 80
+          protocol: TCP
