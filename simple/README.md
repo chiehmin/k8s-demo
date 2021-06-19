@@ -1,5 +1,5 @@
 ```
-kubectl create cm --from-file=http_server.py
-kubectl apply -f deploy.yml
-kubectl apply -f svc.yml
+kubectl create cm code --from-file=http_server.py
+kubectl apply -f deployment.yml
+kubectl apply -f service.yml
 ```
